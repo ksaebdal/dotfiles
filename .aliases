@@ -1,7 +1,8 @@
 # ALiases
 alias be='bundle exec'
 alias ls='ls -F'
-alias mvim='mvim -n -v -N'
+alias v='mvim -n -v -N .'
+alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias :q='logout'
 alias curl='curl -s'
