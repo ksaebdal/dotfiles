@@ -25,6 +25,11 @@ alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
+# Service aliases
+alias mongod='mongod run --config /usr/local/etc/mongod.conf'
+alias default-redis-server='cd && redis-server /usr/local/etc/redis.conf'
+#alias volatile-redis-server='cd && redis-server /usr/local/etc/volatile-redis.conf
+
 ## TV4
 alias tv4='cd ~/git/tv4/www.tv4.se/'
 alias tv4play='cd ~/git/tv4/tv4play/'
