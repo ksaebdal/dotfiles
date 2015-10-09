@@ -6,28 +6,28 @@
 [heroku]
   account = jobb
 [push]
-    default = upstream
+  default = upstream
 [apply]
-    whitespace = nowarn
+  whitespace = nowarn
 [core]
-    excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [alias]
-    l = log --graph --pretty=format:'%C(yellow)%h %Cgreen%ae%Creset (%ar): %s'
-      churn = !git --no-pager log --name-only --oneline | grep -v ' ' | sort | uniq -c | sort -nr | head
+  l = log --graph --pretty=format:'%C(yellow)%h %Cgreen%ae%Creset (%ar): %s'
+  churn = !git --no-pager log --name-only --oneline | grep -v ' ' | sort | uniq -c | sort -nr | head
 [branch]
-    autosetuprebase = always
+  autosetuprebase = always
 [color]
-    diff = auto
-      status = auto
-        branch = auto
-          ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
 [color "branch"]
-    current = yellow reverse
-      local = yellow
-        remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "status"]
-    added = yellow
-      changed = green
-        untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 [diff]
-    algorithm = patience
+  algorithm = patience

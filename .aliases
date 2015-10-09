@@ -5,7 +5,7 @@ alias v='mvim -n -v -N .'
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias :q='logout'
-alias curl='curl -s'
+#alias curl='curl -s'
 alias :q='logout'
 
 # Git related aliases
@@ -35,14 +35,12 @@ alias tv4='cd ~/git/tv4/www.tv4.se/'
 alias tv4play='cd ~/git/tv4/tv4play/'
 alias aman='cd ~/git/tv4/aman/'
 alias api4='cd ~/git/tv4/api4/'
-alias harvester='cd ~/git/tv4/harvester'
+alias annotagger='cd ~/git/tv4/Annotag'
+
 #PHP
 alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.stop='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.restart='nginx.stop && nginx.start'
-alias php-fpm.start="launchctl load -w ~/Library/LaunchAgents/homebrew-php.josegonzalez.php55.plist"
-alias php-fpm.stop="launchctl unload -w ~/Library/LaunchAgents/homebrew-php.josegonzalez.php55.plist"
-alias php-fpm.restart='php-fpm.stop && php-fpm.start'
 alias mysql.start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
 alias mysql.stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
 alias mysql.restart='mysql.stop && mysql.start'

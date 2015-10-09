@@ -35,6 +35,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'benmills/vim-golang-alternate'
+Bundle 'dgryski/vim-godef'
+Bundle 'airblade/vim-gitgutter'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 
 " Language bundles
@@ -50,6 +52,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'leafo/moonscript-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'groenewege/vim-less'
+Bundle 'yosssi/vim-gold'
 
 " Color scheme
 Bundle 'nanotech/jellybeans.vim'
@@ -86,13 +89,24 @@ set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
+set autoread
+set cryptmethod=blowfish
 
 " Vim annoyances
 " http://blog.sanctum.geek.nz/vim-annoyances/
+vnoremap u y
 nnoremap U <C-r>
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap J mzJ`z
+nnoremap Y y$
+inoremap jk <Esc>
+inoremap JK <Esc>
+inoremap Jk <Esc>
+inoremap jK <Esc>
+
+nnoremap <silent> <F5> :set paste!<CR>
+
 set shortmess+=I
 set virtualedit=block
 
@@ -107,10 +121,21 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " Automatic formatting
-autocmd BufWritePre {*.rb,*.js,*.coffee} :%s/\s\+$//e
-autocmd BufWritePre {*.scss,*.haml,*.slim,*.html,*.builder} :%s/\s\+$//e
+function! <SID>StripTrailingSpace()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 
+autocmd BufWritePre *.rb,*.js,*.coffee :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
+                
 au BufNewFile * set noeol
+
+" No show command
+autocmd VimEnter * set nosc
 
 " No show command
 autocmd VimEnter * set nosc
@@ -195,15 +220,26 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.2/libexec/misc/vim
+set rtp+=/usr/local/Cellar/go/1.3/libexec/misc/vim
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
-au BufRead,BufNewFile *.go set filetype=go list noexpandtab syntax=go
+au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
 au BufWritePre *.go silent Fmt
 autocmd BufWritePre *.go :%s/\s\+$//e
+autocmd FileType go compiler go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+let g:godef_split=0
+let g:godef_same_file_in_same_window=1
+let g:gofmt_command='goimports'
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
 
 " Slim
 au BufRead,BufNewFile *.slim set filetype=slim
+
+
+" Disable terminal restore and clear screen when leaving vim
+set t_ti= t_te=
+au VimLeave * :!clear

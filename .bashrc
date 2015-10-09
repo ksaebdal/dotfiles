@@ -1,5 +1,4 @@
 ulimit -n 2048
-
 # Bash
 export EDITOR='mvim -v -N'
 
@@ -14,6 +13,9 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 export GIT_EDITOR='vim'
 export PATH=$PATH:/usr/local/git/bin
 
+#go
+export GOPATH=$HOME/Go
+export PATH=$PATH:$GOPATH/bin
 # Functions
 
 # Serve the current directory over HTTP
@@ -62,3 +64,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # set mule home
 export MULE_HOME=$HOME/apps/mule-standalone-3.3.1
+
+PERL_MB_OPT="--install_base \"/Users/saebdal/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/saebdal/perl5"; export PERL_MM_OPT;
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/saebdal/.travis/travis.sh ] && source /Users/saebdal/.travis/travis.sh
